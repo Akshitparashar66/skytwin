@@ -1,0 +1,10 @@
+{
+  "window": 8,
+  "hidden": 4,
+  "layers": 1,
+  "epochs_run": 0,
+  "best_val_mse": null,
+  "sha256": "fixture0000000",
+  "created_at": "fixture",
+  "device": "cpu"
+}

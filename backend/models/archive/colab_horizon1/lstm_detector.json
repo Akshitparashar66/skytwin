@@ -1,0 +1,52 @@
+{
+  "model": "LSTM next-value predictor",
+  "window": 100,
+  "hidden": 64,
+  "layers": 2,
+  "trained_on": [
+    "SMAP_train (unlabelled nominal telemetry)",
+    "MSL_train (unlabelled nominal telemetry)"
+  ],
+  "train_windows": 173969,
+  "val_windows": 19331,
+  "epochs_run": 6,
+  "best_val_mse": 0.05757146288256965,
+  "history": [
+    {
+      "epoch": 1,
+      "val_mse": 0.05757146288256965,
+      "seconds": 3.9
+    },
+    {
+      "epoch": 2,
+      "val_mse": 0.06529412694604143,
+      "seconds": 3.2
+    },
+    {
+      "epoch": 3,
+      "val_mse": 0.06484631647900117,
+      "seconds": 3.1
+    },
+    {
+      "epoch": 4,
+      "val_mse": 0.061501457589240964,
+      "seconds": 3.0
+    },
+    {
+      "epoch": 5,
+      "val_mse": 0.06177844713110517,
+      "seconds": 3.1
+    },
+    {
+      "epoch": 6,
+      "val_mse": 0.06040974136392419,
+      "seconds": 3.2
+    }
+  ],
+  "device": "cuda",
+  "torch": "2.11.0+cu128",
+  "onnx_max_abs_diff": 4.76837158203125e-07,
+  "sha256": "87120c17ed50bc99dc7e822e3b31c6450f076a885be698e4cb3366bc24a1395d",
+  "created_at": "2026-09-23T10:06:29+00:00",
+  "train_seconds": 0.2
+}

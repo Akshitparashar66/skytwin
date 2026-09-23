@@ -1,0 +1,30 @@
+# Python
+backend/.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# Generated data (re-create with backend/scripts/*); keep the benchmark report so the UI can show it
+backend/data/*
+!backend/data/validation_report.json
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+*.tsbuildinfo
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Training outputs
+training/data/
+training/out/
+
+# Local-only notes
+CLAUDE.md
+.claude/
+docs/JUDGE_PREP.*
+.env

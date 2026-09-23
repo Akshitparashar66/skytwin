@@ -1,0 +1,1143 @@
+{
+  "generated_at": "2026-09-23T11:00:18+00:00",
+  "dataset": "NASA SMAP & MSL labelled telemetry anomalies (Hundman et al., KDD 2018)",
+  "protocol": "Thresholds tuned on SMAP, evaluated on held-out MSL; a labelled anomaly counts as detected if any flagged run overlaps it",
+  "detector": "Dynamic-threshold residual detector (same scoring core as Live Mode)",
+  "reference": "Published baseline for this benchmark: Telemanom (LSTM predictor + nonparametric dynamic thresholding)",
+  "methods": [
+    {
+      "id": "statistical",
+      "name": "Statistical (rolling mean)",
+      "description": "Predicts each value as the mean of the previous samples. No training.",
+      "variant": "rolling_mean_30",
+      "config": {
+        "alpha": 0.1,
+        "z": 12.0,
+        "signed": false,
+        "min_std": 0.01
+      },
+      "smap_tuning": {
+        "channels": 53,
+        "labelled_anomalies": 67,
+        "true_positives": 29,
+        "false_positives": 16,
+        "false_negatives": 38,
+        "precision": 0.644,
+        "recall": 0.433,
+        "f1": 0.518
+      },
+      "msl_held_out": {
+        "channels": 27,
+        "labelled_anomalies": 36,
+        "true_positives": 12,
+        "false_positives": 6,
+        "false_negatives": 24,
+        "precision": 0.667,
+        "recall": 0.333,
+        "f1": 0.444
+      },
+      "sweep": [
+        {
+          "variant": "rolling_mean_5",
+          "config": {
+            "alpha": 0.1,
+            "z": 6.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 36,
+          "false_positives": 105,
+          "false_negatives": 31,
+          "precision": 0.255,
+          "recall": 0.537,
+          "f1": 0.346
+        },
+        {
+          "variant": "rolling_mean_5",
+          "config": {
+            "alpha": 0.1,
+            "z": 6.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 33,
+          "false_positives": 130,
+          "false_negatives": 34,
+          "precision": 0.202,
+          "recall": 0.493,
+          "f1": 0.287
+        },
+        {
+          "variant": "rolling_mean_5",
+          "config": {
+            "alpha": 0.1,
+            "z": 9.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 32,
+          "false_positives": 48,
+          "false_negatives": 35,
+          "precision": 0.4,
+          "recall": 0.478,
+          "f1": 0.435
+        },
+        {
+          "variant": "rolling_mean_5",
+          "config": {
+            "alpha": 0.1,
+            "z": 9.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 32,
+          "false_positives": 54,
+          "false_negatives": 35,
+          "precision": 0.372,
+          "recall": 0.478,
+          "f1": 0.418
+        },
+        {
+          "variant": "rolling_mean_5",
+          "config": {
+            "alpha": 0.1,
+            "z": 12.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 30,
+          "false_positives": 19,
+          "false_negatives": 37,
+          "precision": 0.612,
+          "recall": 0.448,
+          "f1": 0.517
+        },
+        {
+          "variant": "rolling_mean_5",
+          "config": {
+            "alpha": 0.1,
+            "z": 12.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 28,
+          "false_positives": 25,
+          "false_negatives": 39,
+          "precision": 0.528,
+          "recall": 0.418,
+          "f1": 0.467
+        },
+        {
+          "variant": "rolling_mean_5",
+          "config": {
+            "alpha": 0.1,
+            "z": 16.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 27,
+          "false_positives": 11,
+          "false_negatives": 40,
+          "precision": 0.711,
+          "recall": 0.403,
+          "f1": 0.514
+        },
+        {
+          "variant": "rolling_mean_5",
+          "config": {
+            "alpha": 0.1,
+            "z": 16.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 26,
+          "false_positives": 15,
+          "false_negatives": 41,
+          "precision": 0.634,
+          "recall": 0.388,
+          "f1": 0.481
+        },
+        {
+          "variant": "rolling_mean_5",
+          "config": {
+            "alpha": 0.3,
+            "z": 6.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 38,
+          "false_positives": 315,
+          "false_negatives": 29,
+          "precision": 0.108,
+          "recall": 0.567,
+          "f1": 0.181
+        },
+        {
+          "variant": "rolling_mean_5",
+          "config": {
+            "alpha": 0.3,
+            "z": 6.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 40,
+          "false_positives": 372,
+          "false_negatives": 27,
+          "precision": 0.097,
+          "recall": 0.597,
+          "f1": 0.167
+        },
+        {
+          "variant": "rolling_mean_5",
+          "config": {
+            "alpha": 0.3,
+            "z": 9.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 34,
+          "false_positives": 107,
+          "false_negatives": 33,
+          "precision": 0.241,
+          "recall": 0.507,
+          "f1": 0.327
+        },
+        {
+          "variant": "rolling_mean_5",
+          "config": {
+            "alpha": 0.3,
+            "z": 9.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 33,
+          "false_positives": 142,
+          "false_negatives": 34,
+          "precision": 0.189,
+          "recall": 0.493,
+          "f1": 0.273
+        },
+        {
+          "variant": "rolling_mean_5",
+          "config": {
+            "alpha": 0.3,
+            "z": 12.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 33,
+          "false_positives": 66,
+          "false_negatives": 34,
+          "precision": 0.333,
+          "recall": 0.493,
+          "f1": 0.398
+        },
+        {
+          "variant": "rolling_mean_5",
+          "config": {
+            "alpha": 0.3,
+            "z": 12.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 33,
+          "false_positives": 85,
+          "false_negatives": 34,
+          "precision": 0.28,
+          "recall": 0.493,
+          "f1": 0.357
+        },
+        {
+          "variant": "rolling_mean_5",
+          "config": {
+            "alpha": 0.3,
+            "z": 16.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 31,
+          "false_positives": 41,
+          "false_negatives": 36,
+          "precision": 0.431,
+          "recall": 0.463,
+          "f1": 0.446
+        },
+        {
+          "variant": "rolling_mean_5",
+          "config": {
+            "alpha": 0.3,
+            "z": 16.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 31,
+          "false_positives": 42,
+          "false_negatives": 36,
+          "precision": 0.425,
+          "recall": 0.463,
+          "f1": 0.443
+        },
+        {
+          "variant": "rolling_mean_30",
+          "config": {
+            "alpha": 0.1,
+            "z": 6.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 33,
+          "false_positives": 107,
+          "false_negatives": 34,
+          "precision": 0.236,
+          "recall": 0.493,
+          "f1": 0.319
+        },
+        {
+          "variant": "rolling_mean_30",
+          "config": {
+            "alpha": 0.1,
+            "z": 6.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 35,
+          "false_positives": 108,
+          "false_negatives": 32,
+          "precision": 0.245,
+          "recall": 0.522,
+          "f1": 0.333
+        },
+        {
+          "variant": "rolling_mean_30",
+          "config": {
+            "alpha": 0.1,
+            "z": 9.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 32,
+          "false_positives": 36,
+          "false_negatives": 35,
+          "precision": 0.471,
+          "recall": 0.478,
+          "f1": 0.474
+        },
+        {
+          "variant": "rolling_mean_30",
+          "config": {
+            "alpha": 0.1,
+            "z": 9.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 31,
+          "false_positives": 33,
+          "false_negatives": 36,
+          "precision": 0.484,
+          "recall": 0.463,
+          "f1": 0.473
+        },
+        {
+          "variant": "rolling_mean_30",
+          "config": {
+            "alpha": 0.1,
+            "z": 12.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 29,
+          "false_positives": 16,
+          "false_negatives": 38,
+          "precision": 0.644,
+          "recall": 0.433,
+          "f1": 0.518
+        },
+        {
+          "variant": "rolling_mean_30",
+          "config": {
+            "alpha": 0.1,
+            "z": 12.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 29,
+          "false_positives": 23,
+          "false_negatives": 38,
+          "precision": 0.558,
+          "recall": 0.433,
+          "f1": 0.487
+        },
+        {
+          "variant": "rolling_mean_30",
+          "config": {
+            "alpha": 0.1,
+            "z": 16.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 26,
+          "false_positives": 12,
+          "false_negatives": 41,
+          "precision": 0.684,
+          "recall": 0.388,
+          "f1": 0.495
+        },
+        {
+          "variant": "rolling_mean_30",
+          "config": {
+            "alpha": 0.1,
+            "z": 16.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 26,
+          "false_positives": 12,
+          "false_negatives": 41,
+          "precision": 0.684,
+          "recall": 0.388,
+          "f1": 0.495
+        },
+        {
+          "variant": "rolling_mean_30",
+          "config": {
+            "alpha": 0.3,
+            "z": 6.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 33,
+          "false_positives": 292,
+          "false_negatives": 34,
+          "precision": 0.102,
+          "recall": 0.493,
+          "f1": 0.168
+        },
+        {
+          "variant": "rolling_mean_30",
+          "config": {
+            "alpha": 0.3,
+            "z": 6.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 33,
+          "false_positives": 294,
+          "false_negatives": 34,
+          "precision": 0.101,
+          "recall": 0.493,
+          "f1": 0.168
+        },
+        {
+          "variant": "rolling_mean_30",
+          "config": {
+            "alpha": 0.3,
+            "z": 9.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 32,
+          "false_positives": 96,
+          "false_negatives": 35,
+          "precision": 0.25,
+          "recall": 0.478,
+          "f1": 0.328
+        },
+        {
+          "variant": "rolling_mean_30",
+          "config": {
+            "alpha": 0.3,
+            "z": 9.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 32,
+          "false_positives": 113,
+          "false_negatives": 35,
+          "precision": 0.221,
+          "recall": 0.478,
+          "f1": 0.302
+        },
+        {
+          "variant": "rolling_mean_30",
+          "config": {
+            "alpha": 0.3,
+            "z": 12.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 32,
+          "false_positives": 58,
+          "false_negatives": 35,
+          "precision": 0.356,
+          "recall": 0.478,
+          "f1": 0.408
+        },
+        {
+          "variant": "rolling_mean_30",
+          "config": {
+            "alpha": 0.3,
+            "z": 12.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 32,
+          "false_positives": 48,
+          "false_negatives": 35,
+          "precision": 0.4,
+          "recall": 0.478,
+          "f1": 0.435
+        },
+        {
+          "variant": "rolling_mean_30",
+          "config": {
+            "alpha": 0.3,
+            "z": 16.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 29,
+          "false_positives": 32,
+          "false_negatives": 38,
+          "precision": 0.475,
+          "recall": 0.433,
+          "f1": 0.453
+        },
+        {
+          "variant": "rolling_mean_30",
+          "config": {
+            "alpha": 0.3,
+            "z": 16.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 29,
+          "false_positives": 21,
+          "false_negatives": 38,
+          "precision": 0.58,
+          "recall": 0.433,
+          "f1": 0.496
+        }
+      ]
+    },
+    {
+      "id": "lstm",
+      "name": "LSTM (trained)",
+      "description": "2-layer LSTM, window 100, horizon 30, trained on unlabelled SMAP/MSL train splits.",
+      "model": {
+        "window": 100,
+        "horizon": 30,
+        "hidden": 64,
+        "layers": 2,
+        "epochs_run": 6,
+        "best_val_mse": 0.24392673699698503,
+        "created_at": "2026-09-23T10:52:56+00:00",
+        "device": "cpu",
+        "sha256": "b8fb956f35daab32e5bea96a76a9412ab5ecd66c1675fdc53641bda414429928"
+      },
+      "variant": "lstm",
+      "config": {
+        "alpha": 0.1,
+        "z": 9.0,
+        "signed": false,
+        "min_std": 0.01
+      },
+      "smap_tuning": {
+        "channels": 53,
+        "labelled_anomalies": 67,
+        "true_positives": 46,
+        "false_positives": 24,
+        "false_negatives": 21,
+        "precision": 0.657,
+        "recall": 0.687,
+        "f1": 0.672
+      },
+      "msl_held_out": {
+        "channels": 27,
+        "labelled_anomalies": 36,
+        "true_positives": 20,
+        "false_positives": 12,
+        "false_negatives": 16,
+        "precision": 0.625,
+        "recall": 0.556,
+        "f1": 0.588
+      },
+      "sweep": [
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.1,
+            "z": 4.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 64,
+          "false_positives": 83,
+          "false_negatives": 3,
+          "precision": 0.435,
+          "recall": 0.955,
+          "f1": 0.598
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.1,
+            "z": 4.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 42,
+          "false_positives": 1065,
+          "false_negatives": 25,
+          "precision": 0.038,
+          "recall": 0.627,
+          "f1": 0.072
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.1,
+            "z": 6.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 58,
+          "false_positives": 56,
+          "false_negatives": 9,
+          "precision": 0.509,
+          "recall": 0.866,
+          "f1": 0.641
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.1,
+            "z": 6.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 28,
+          "false_positives": 195,
+          "false_negatives": 39,
+          "precision": 0.126,
+          "recall": 0.418,
+          "f1": 0.193
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.1,
+            "z": 9.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 46,
+          "false_positives": 24,
+          "false_negatives": 21,
+          "precision": 0.657,
+          "recall": 0.687,
+          "f1": 0.672
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.1,
+            "z": 9.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 24,
+          "false_positives": 26,
+          "false_negatives": 43,
+          "precision": 0.48,
+          "recall": 0.358,
+          "f1": 0.41
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.1,
+            "z": 12.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 36,
+          "false_positives": 9,
+          "false_negatives": 31,
+          "precision": 0.8,
+          "recall": 0.537,
+          "f1": 0.643
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.1,
+            "z": 12.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 22,
+          "false_positives": 13,
+          "false_negatives": 45,
+          "precision": 0.629,
+          "recall": 0.328,
+          "f1": 0.431
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.1,
+            "z": 16.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 25,
+          "false_positives": 7,
+          "false_negatives": 42,
+          "precision": 0.781,
+          "recall": 0.373,
+          "f1": 0.505
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.1,
+            "z": 16.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 19,
+          "false_positives": 0,
+          "false_negatives": 48,
+          "precision": 1.0,
+          "recall": 0.284,
+          "f1": 0.442
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.3,
+            "z": 4.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 59,
+          "false_positives": 354,
+          "false_negatives": 8,
+          "precision": 0.143,
+          "recall": 0.881,
+          "f1": 0.246
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.3,
+            "z": 4.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 53,
+          "false_positives": 1904,
+          "false_negatives": 14,
+          "precision": 0.027,
+          "recall": 0.791,
+          "f1": 0.052
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.3,
+            "z": 6.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 51,
+          "false_positives": 96,
+          "false_negatives": 16,
+          "precision": 0.347,
+          "recall": 0.761,
+          "f1": 0.477
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.3,
+            "z": 6.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 36,
+          "false_positives": 425,
+          "false_negatives": 31,
+          "precision": 0.078,
+          "recall": 0.537,
+          "f1": 0.136
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.3,
+            "z": 9.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 34,
+          "false_positives": 69,
+          "false_negatives": 33,
+          "precision": 0.33,
+          "recall": 0.507,
+          "f1": 0.4
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.3,
+            "z": 9.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 31,
+          "false_positives": 135,
+          "false_negatives": 36,
+          "precision": 0.187,
+          "recall": 0.463,
+          "f1": 0.266
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.3,
+            "z": 12.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 30,
+          "false_positives": 51,
+          "false_negatives": 37,
+          "precision": 0.37,
+          "recall": 0.448,
+          "f1": 0.405
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.3,
+            "z": 12.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 30,
+          "false_positives": 50,
+          "false_negatives": 37,
+          "precision": 0.375,
+          "recall": 0.448,
+          "f1": 0.408
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.3,
+            "z": 16.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 29,
+          "false_positives": 29,
+          "false_negatives": 38,
+          "precision": 0.5,
+          "recall": 0.433,
+          "f1": 0.464
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.3,
+            "z": 16.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 29,
+          "false_positives": 22,
+          "false_negatives": 38,
+          "precision": 0.569,
+          "recall": 0.433,
+          "f1": 0.492
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.5,
+            "z": 4.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 60,
+          "false_positives": 994,
+          "false_negatives": 7,
+          "precision": 0.057,
+          "recall": 0.896,
+          "f1": 0.107
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.5,
+            "z": 4.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 56,
+          "false_positives": 2123,
+          "false_negatives": 11,
+          "precision": 0.026,
+          "recall": 0.836,
+          "f1": 0.05
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.5,
+            "z": 6.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 49,
+          "false_positives": 152,
+          "false_negatives": 18,
+          "precision": 0.244,
+          "recall": 0.731,
+          "f1": 0.366
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.5,
+            "z": 6.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 38,
+          "false_positives": 515,
+          "false_negatives": 29,
+          "precision": 0.069,
+          "recall": 0.567,
+          "f1": 0.123
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.5,
+            "z": 9.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 32,
+          "false_positives": 96,
+          "false_negatives": 35,
+          "precision": 0.25,
+          "recall": 0.478,
+          "f1": 0.328
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.5,
+            "z": 9.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 32,
+          "false_positives": 152,
+          "false_negatives": 35,
+          "precision": 0.174,
+          "recall": 0.478,
+          "f1": 0.255
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.5,
+            "z": 12.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 31,
+          "false_positives": 63,
+          "false_negatives": 36,
+          "precision": 0.33,
+          "recall": 0.463,
+          "f1": 0.385
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.5,
+            "z": 12.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 31,
+          "false_positives": 84,
+          "false_negatives": 36,
+          "precision": 0.27,
+          "recall": 0.463,
+          "f1": 0.341
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.5,
+            "z": 16.0,
+            "signed": false,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 30,
+          "false_positives": 40,
+          "false_negatives": 37,
+          "precision": 0.429,
+          "recall": 0.448,
+          "f1": 0.438
+        },
+        {
+          "variant": "lstm",
+          "config": {
+            "alpha": 0.5,
+            "z": 16.0,
+            "signed": true,
+            "min_std": 0.01
+          },
+          "channels": 53,
+          "labelled_anomalies": 67,
+          "true_positives": 30,
+          "false_positives": 43,
+          "false_negatives": 37,
+          "precision": 0.411,
+          "recall": 0.448,
+          "f1": 0.429
+        }
+      ]
+    }
+  ],
+  "runtime_s": 107.5
+}
