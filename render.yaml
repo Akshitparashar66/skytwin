@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: skytwin
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free            # switch to "starter" for demo week so it never sleeps
+    region: singapore
+    healthCheckPath: /api/config
+    autoDeploy: true

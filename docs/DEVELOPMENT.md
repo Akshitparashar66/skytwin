@@ -14,7 +14,7 @@ All commands from the repo root. Windows paths shown; on macOS/Linux use `.venv/
 
 ```bash
 # --- setup (once) ---
-cd backend && python -m venv .venv && .venv/Scripts/python -m pip install -r requirements.txt && cd ..
+cd backend && python -m venv .venv && .venv/Scripts/python -m pip install -r requirements-dev.txt && cd ..
 cd frontend && npm install && cd ..
 
 # --- run (dev: two terminals, hot reload) ---
@@ -24,6 +24,9 @@ cd frontend && npm run dev            # http://localhost:5173 (proxies /api and 
 # --- run (demo: one process) ---
 cd frontend && npm run build && cd ../backend && .venv/Scripts/python -m uvicorn skytwin.api.main:app --port 8000
                                       # http://localhost:8000 serves the built UI
+
+# --- deploy (Docker; Render blueprint in render.yaml) ---
+docker build -t skytwin . && docker run -p 8000:8000 skytwin   # one instance only: live state is in memory
 
 # --- test / lint (run all before calling anything done) ---
 cd backend && .venv/Scripts/python -m pytest -q          # 57 tests, ~7 s

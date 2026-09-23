@@ -1,0 +1,15 @@
+.git
+**/node_modules
+**/.venv
+**/__pycache__
+**/.pytest_cache
+**/.ruff_cache
+frontend/dist
+backend/data/*
+!backend/data/validation_report.json
+backend/tests
+training
+docs
+CLAUDE.md
+.claude
+*.md

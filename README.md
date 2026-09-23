@@ -13,7 +13,7 @@ Simulate → Evaluate → Operator decides.
 ## Quick start
 
 ```bash
-cd backend && python -m venv .venv && .venv/Scripts/python -m pip install -r requirements.txt
+cd backend && python -m venv .venv && .venv/Scripts/python -m pip install -r requirements-dev.txt
 cd ../frontend && npm install && npm run build
 cd ../backend && .venv/Scripts/python -m uvicorn skytwin.api.main:app --port 8000
 # open http://localhost:8000
@@ -21,5 +21,11 @@ cd ../backend && .venv/Scripts/python -m uvicorn skytwin.api.main:app --port 800
 
 Optional NASA benchmark (SMAP/MSL labelled anomalies):
 `python scripts/download_nasa.py && python scripts/validate_anomalies.py` from `backend/`.
+
+## Deploy
+
+The repo ships a `Dockerfile` (builds the dashboard, then serves it from the API) and a Render blueprint (`render.yaml`).
+On [Render](https://render.com): **New → Blueprint →** pick this repo. Any Docker host works the same way; the app
+listens on `$PORT`. Run exactly one instance: the live spacecraft is kept in memory.
 
 See [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md) for all commands and architecture, and [docs/PLAN.md](docs/PLAN.md) for the plan and demo script.

@@ -1,7 +1,5 @@
-fastapi>=0.115
-uvicorn[standard]>=0.30
-numpy>=2.0
-onnxruntime>=1.18
-pytest>=8.0
-httpx>=0.27
-ruff>=0.6
+# Runtime dependencies (what the server needs). Dev tools: requirements-dev.txt.
+fastapi==0.141.1
+uvicorn[standard]==0.53.0
+numpy==2.5.3
+onnxruntime==1.30.0
