@@ -27,4 +27,6 @@ training/out/
 CLAUDE.md
 .claude/
 docs/JUDGE_PREP.*
+docs/DASHBOARD_GUIDE.*
+.playwright-mcp/
 .env
