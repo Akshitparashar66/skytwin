@@ -99,7 +99,8 @@ def _impact(key, label, unit, b, s, tolerance, up_is_bad) -> dict:
 
 def endurance_h(points: list[dict], params: SpacecraftParams) -> tuple[float | None, str]:
     """Hours until SOC reaches the critical limit: simulated if it happens in the horizon, else extrapolated
-    from the orbit-to-orbit trend of SOC minima. None if the trend is flat or rising (sustainable)."""
+    from the orbit-to-orbit trend of SOC minima (never earlier than the horizon end, which the simulation shows
+    SOC survives). None if the trend is flat or rising (sustainable)."""
     for p in points:
         if p["soc_pct"] < SAFE_MODE_SOC_PCT:
             return p["t_min"] / 60.0, "simulated"
@@ -115,7 +116,9 @@ def endurance_h(points: list[dict], params: SpacecraftParams) -> tuple[float | N
     slope = sum((x - mx) * (y - my) for x, y in zip(xs, ys)) / sum((x - mx) ** 2 for x in xs)  # % per minute
     if slope > -0.1 / 60.0:
         return None, "sustainable"
-    t_cross = xs[-1] + (ys[-1] - SAFE_MODE_SOC_PCT) / -slope
+    # Orbit windows start at the snapshot, not at eclipse boundaries, so the line through their minima can
+    # cross the limit inside the horizon even though the simulated SOC never does.
+    t_cross = max(xs[-1] + (ys[-1] - SAFE_MODE_SOC_PCT) / -slope, points[-1]["t_min"])
     return t_cross / 60.0, "extrapolated"
 
 

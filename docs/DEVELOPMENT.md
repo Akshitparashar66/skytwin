@@ -29,7 +29,7 @@ cd frontend && npm run build && cd ../backend && .venv/Scripts/python -m uvicorn
 docker build -t skytwin . && docker run -p 8000:8000 skytwin   # one instance only: live state is in memory
 
 # --- test / lint (run all before calling anything done) ---
-cd backend && .venv/Scripts/python -m pytest -q          # 57 tests, ~7 s
+cd backend && .venv/Scripts/python -m pytest -q          # 58 tests, ~8 s
 cd backend && .venv/Scripts/ruff check . && .venv/Scripts/ruff format --check .
 cd frontend && npx tsc -b && npm test                    # typecheck + vitest
 cd frontend && npm run build

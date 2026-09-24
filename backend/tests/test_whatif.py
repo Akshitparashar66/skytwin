@@ -53,6 +53,17 @@ def test_power_increase_impact_chain(snapshot):
     assert any("power-negative" in line for line in r["narrative"])
 
 
+def test_extrapolated_endurance_never_falls_inside_the_horizon():
+    # From this state SOC bottoms out at ~25.6% within 6 h; the raw trend used to claim ~5.2 h.
+    sc = Spacecraft()
+    sc.advance(360 * 60)
+    sc.state.soc = 0.75
+    r = simulate(sc.snapshot(), [Perturbation("load_increase", 20)], horizon_min=360)
+    assert min(p["soc_pct"] for p in r["scenario"]) > 25.0
+    assert r["summary"]["endurance_basis"] == "extrapolated"
+    assert r["summary"]["endurance_h"] >= 6.0
+
+
 def test_solar_damage_is_critical_with_safe_mode(snapshot):
     r = simulate(snapshot, [Perturbation("solar_degradation", 30)])
     assert r["risk_level"] == "CRITICAL"
